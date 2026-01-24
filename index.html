@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elastic rope</title>
+    <style>
+        body {
+            background-color: rgb(214, 213, 213);
+        }
+        #box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 36px;
+            height: 36px;
+            background-color: blue;
+            border-radius: 10%;
+            animation: spin 3s infinite linear;
+        }
+        @keyframes spin {
+            0% {
+                rotate: 0deg;
+            }
+            100% {
+                rotate: 360deg;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script src="script.js"></script>
+</html>
