@@ -1,7 +1,7 @@
 let box = document.getElementById('box')
 let p = q = 0;
 let x = y = .5;
-let vel = [0,0];
+let vel = [8, 8];
 let a = [0,0]
 let damping = .07;
 let walls = true;
