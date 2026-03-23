@@ -1,5 +1,9 @@
-let box = document.getElementById('box')
-let p = q = 0;
+let box;
+function setElement(elem) {
+    box = elem;
+    box.style.position = 'absolute';
+}
+let p = q = w = 0;
 let x = y = .5;
 let vel = [8, 8];
 let a = [0,0]
@@ -9,12 +13,12 @@ let magnitude = .5;
 let e = .9;
 let state = false;
 
-document.addEventListener('mousemove', (e) => {
-    x = e.clientX - 18;
-    y = e.clientY - 18;
-})
-
-function start(frameGap){
+function start(frameGap=10){
+    document.addEventListener('mousemove', (e) => {
+        x = e.clientX - box.offsetWidth/2;
+        y = e.clientY - box.offsetHeight;
+    })
+    
     if(!state){
         interval = setInterval(() => {
             state = true;
@@ -30,6 +34,8 @@ function start(frameGap){
             vel[1] += magnitude*a[1];
             p += vel[0];
             q += vel[1];
+            if(Math.sqrt(vel[0]**2 + vel[1]**2) < 5 && Math.sqrt((p-x)**2 + (q-y)**2) < 5) box.className = '';
+            else if(box.className != 'rotate') box.className = 'rotate';
             box.style.left = p + 'px';
             box.style.top = q + 'px';
             vel[0] -= damping*Math.sign(vel[0]);
@@ -43,5 +49,8 @@ function start(frameGap){
 function stop(){
     clearInterval(interval);
     state = false;
+    document.removeEventListener('mousemove');
 }
-start(10);
+
+setElement(document.getElementById('box'))
+start()
